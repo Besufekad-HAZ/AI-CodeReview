@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "prismjs/themes/prism-tomorrow.css";
 import Editor from "react-simple-code-editor";
 import prism from "prismjs";
@@ -9,22 +9,22 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0);
-  const [code, setCode] = useState(` function sum() {
+  const [code, setCode] = useState(`function sum() {
   return 1 + 1
 }`);
-
-  const [review, setReview] = useState(``);
-
-  useEffect(() => {
-    prism.highlightAll();
-  }, []);
+  const [review, setReview] = useState("");
 
   async function reviewCode() {
-    const response = await axios.post("http://localhost:3000/ai/get-review", {
-      code,
-    });
-    setReview(response.data);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.REACT_APP_API_ENDPOINT}/ai/get-review`,
+        { code }
+      );
+      setReview(response.data);
+    } catch (error) {
+      console.error("Error fetching review:", error);
+      setReview("Failed to fetch review. Please check the console for errors.");
+    }
   }
 
   return (
