@@ -17,7 +17,7 @@ function App() {
   async function reviewCode() {
     try {
       const response = await axios.post(
-        `${import.meta.env.REACT_APP_API_ENDPOINT}/ai/get-review`,
+        `${import.meta.env.VITE_API_ENDPOINT}/ai/get-review`,
         { code }
       );
       setReview(response.data);
