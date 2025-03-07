@@ -13,8 +13,10 @@ function App() {
   return 1 + 1
 }`);
   const [review, setReview] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function reviewCode() {
+    setIsLoading(true);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_ENDPOINT}/ai/get-review`,
@@ -24,6 +26,8 @@ function App() {
     } catch (error) {
       console.error("Error fetching review:", error);
       setReview("Failed to fetch review. Please check the console for errors.");
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -49,8 +53,15 @@ function App() {
               }}
             />
           </div>
-          <div onClick={reviewCode} className="review">
-            Review
+          <div
+            onClick={!isLoading ? reviewCode : undefined}
+            className="review"
+            style={{
+              opacity: isLoading ? 0.6 : 1,
+              pointerEvents: isLoading ? "none" : "auto",
+            }}
+          >
+            {isLoading ? "Loading..." : "Review"}
           </div>
         </div>
         <div className="right">
