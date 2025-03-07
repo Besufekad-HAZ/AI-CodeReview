@@ -16,6 +16,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   async function reviewCode() {
+    // Frontend validation: check if code is empty
+    if (!code.trim()) {
+      setReview("Please write some code before requesting a review.");
+      return;
+    }
     setIsLoading(true);
     try {
       const response = await axios.post(
