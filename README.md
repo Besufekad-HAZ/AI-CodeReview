@@ -120,8 +120,8 @@ npm run build
 
 👤 **Your Name**
 
-- GitHub: [@yourusername](https://github.com/Besufekad-HAZ)
-- LinkedIn: [Your Profile](https://www.linkedin.com/in/besufekadalemu)
+- GitHub: [@Besu](https://github.com/Besufekad-HAZ)
+- LinkedIn: [Besufekad Alemu](https://www.linkedin.com/in/besufekadalemu)
 
 ---
 
