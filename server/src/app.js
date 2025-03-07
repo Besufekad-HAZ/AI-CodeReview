@@ -1,10 +1,14 @@
 const express = require("express");
-const cors = require("cors"); // add this line
+const cors = require("cors");
 const aiRoutes = require("./routes/ai.routes");
 
 const app = express();
 
-app.use(cors()); // add this line to enable CORS
+app.use(
+  cors({
+    origin: "https://ai-codereview.netlify.app",
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
