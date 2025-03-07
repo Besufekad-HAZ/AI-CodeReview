@@ -43,13 +43,13 @@ function App() {
           <div className="code">
             <Editor
               value={code}
-              onValueChange={(code) => setCode(code)}
+              onValueChange={setCode}
               highlight={(code) =>
                 prism.highlight(code, prism.languages.javascript, "javascript")
               }
               padding={10}
               style={{
-                fontFamily: '"Fira code", "Fira Mono", monospace',
+                fontFamily: '"Fira Code", "Fira Mono", monospace',
                 fontSize: 16,
                 border: "1px solid #ddd",
                 borderRadius: "5px",
@@ -70,6 +70,7 @@ function App() {
           </div>
         </div>
         <div className="right">
+          <h2 className="main-title">AI Review</h2>
           <Markdown rehypePlugins={[rehypeHighlight]}>{review}</Markdown>
         </div>
       </main>
